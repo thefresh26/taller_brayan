@@ -16,15 +16,6 @@
 	let mensaje = '';
 	let cargando = false;
 	let idEditando = null;
-	// Reto final: búsqueda, contador y promedio general
-	let busqueda = '';
-	$: estudiantesFiltrados = estudiantes.filter((e) =>
-		e.nombre.toLowerCase().includes(busqueda.toLowerCase())
-	);
-	$: promedioGeneral =
-		estudiantes.length === 0
-			? 0
-			: estudiantes.reduce((suma, e) => suma + Number(e.promedio), 0) / estudiantes.length;
 	async function cargarEstudiantes() {
 		cargando = true;
 		try {
@@ -132,20 +123,10 @@
 </Card>
 <Card>
 	<h2>Lista de estudiantes</h2>
-	<p class="resumen">
-		Total de estudiantes: <strong>{estudiantes.length}</strong> | Promedio general:
-		<strong>{promedioGeneral.toFixed(2)}</strong>
-	</p>
-	<div class="campo">
-		<label for="busqueda">Buscar por nombre</label>
-		<input id="busqueda" type="text" placeholder="Escribe un nombre..." bind:value={busqueda} />
-	</div>
 	{#if cargando}
 		<p>Cargando...</p>
 	{:else if estudiantes.length === 0}
 		<p>No hay estudiantes registrados.</p>
-	{:else if estudiantesFiltrados.length === 0}
-		<p>No hay estudiantes que coincidan con la búsqueda.</p>
 	{:else}
 		<table>
 			<thead>
@@ -158,7 +139,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each estudiantesFiltrados as estudiante (estudiante.id)}
+				{#each estudiantes as estudiante (estudiante.id)}
 					<tr>
 						<td>{estudiante.id}</td>
 						<td>{estudiante.nombre}</td>
@@ -263,9 +244,6 @@
 	}
 	tr:hover td {
 		background-color: #f9fafb;
-	}
-	.resumen {
-		color: #1e3a8a;
 	}
 	.acciones {
 		display: flex;

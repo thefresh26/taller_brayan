@@ -1,1 +1,5 @@
 context/
+.env
+__pycache__/
+myvenv/
+node_modules/

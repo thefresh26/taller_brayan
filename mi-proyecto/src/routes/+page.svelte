@@ -5,8 +5,5 @@
 
 <Header titulo="Bienvenido" subtitulo="Sistema de gestión escolar" />
 <Card>
-	<p>
-		Usa el menú superior para entrar al módulo de <a href="/estudiantes">Estudiantes</a> o de
-		<a href="/libros">Libros</a>.
-	</p>
+	<p>Usa el menú superior para entrar al módulo de <a href="/estudiantes">Estudiantes</a>.</p>
 </Card>
