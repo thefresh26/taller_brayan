@@ -3,6 +3,8 @@
 ollama --version
 ollama pull qwen3:1.7b
 ollama pull qwen2.5:1.5b-instruct
+# Modelo que usa el profesor en las capturas (2.5 GB)
+ollama pull qwen3:4b-thinking-2507-q4_K_M
 ollama list
 
 # Comando del profesor (Open WebUI en http://localhost:3000/)
